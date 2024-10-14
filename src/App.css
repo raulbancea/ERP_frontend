@@ -1,126 +1,77 @@
-.container-fluid {
-  padding: 40px 20px;
-}
-
-.mt-4,
-.summary-section {
-  margin-top: 60px;
-}
-.recent-operations {
-  margin-top: 40px;
-}
-
-.sidebar {
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
   padding: 20px;
-  width: 200px;
-  background-color: #f5f5f5;
+  background-color: #f7f7f7;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.card {
+h2 {
+  text-align: center;
   margin-bottom: 20px;
+  color: #333;
 }
 
-.padding-top {
-  padding-top: 20px;
-}
-
-.app {
-  display: flex;
-}
-
-.brand-button {
-  display: block;
-  margin-bottom: 20px;
-  background-color: #ddd;
-  padding: 10px;
-}
-
-.sidebar nav ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.sidebar nav ul li {
-  margin: 15px 0;
-}
-
-.upload-button {
-  background-color: #007bff;
-  color: white;
-  padding: 10px;
-  border: none;
-  cursor: pointer;
-}
-
-main {
-  flex-grow: 1;
-  padding: 40px 20px 20px;
-}
-
-.summary {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
-}
-
-.summary-item {
-  padding: 15px;
-  border-radius: 5px;
-  color: white;
-}
-
-.balance {
-  background-color: blue;
-}
-
-.income {
-  background-color: green;
-}
-
-.expenses {
-  background-color: red;
-}
-
-.col-md-6,
-.col-md-3 {
-  margin-top: 20px;
-}
-
-html,
-body,
-#root,
-.container-fluid,
-.row {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-.col-md-3,
-.col-md-6 {
+.form-container {
   display: flex;
   flex-direction: column;
-}
-
-.col-md-6 > div {
+  gap: 10px;
   margin-bottom: 20px;
 }
 
-.sidebar,
-.recent-operations {
-  flex: 1;
+.form-group {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
 }
 
-h5 {
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.submit-button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
   text-align: center;
 }
 
-.summary-section,
-.recent-operations {
-  margin-top: 30px;
+.submit-button:hover {
+  background-color: #218838;
 }
 
-.summary-section > div,
-.recent-operations > div {
-  padding: 20px;
+.styled-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 25px 0;
+  font-size: 18px;
+  text-align: left;
+}
+
+.styled-table th,
+.styled-table td {
+  padding: 12px 15px;
+}
+
+.styled-table thead tr {
+  background-color: #009879;
+  color: #ffffff;
+}
+
+.styled-table tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
 }
