@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
-function Documente() {
+const Documente = () => {
   const [documents, setDocuments] = useState([]);
   const [file, setFile] = useState(null);
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
 
   useEffect(() => {
-    fetch("/documente")
+    fetch('/documente')
       .then((response) => response.json())
       .then((data) => setDocuments(data));
   }, []);
@@ -18,65 +18,66 @@ function Documente() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = new FormData();
-    formData.append("document[file]", file);
-    formData.append("document[title]", title);
-    formData.append("document[description]", description);
 
-    fetch("http://localhost:3000/documente", {
-      method: "POST",
+    const formData = new FormData();
+    formData.append('document[file]', file);
+    formData.append('document[title]', title);
+    formData.append('document[description]', description);
+
+    fetch('http://localhost:3000/documente', {
+      method: 'POST',
       body: formData,
     })
       .then((response) => response.json())
       .then((newDocument) => {
-        setDocuments([...documents, newDocument]);
+        setDocuments((prevDocuments) => [...prevDocuments, newDocument]);
         setFile(null);
-        setTitle("");
-        setDescription("");
+        setTitle('');
+        setDescription('');
       });
   };
 
   const handleDelete = (id) => {
     fetch(`/documente/${id}`, {
-      method: "DELETE",
+      method: 'DELETE',
     }).then(() => {
-      setDocuments(documents.filter((doc) => doc.id !== id));
+      setDocuments((prevDocuments) => prevDocuments.filter((doc) => doc.id !== id));
     });
   };
 
   return (
-    <div className="container">
+    <div className='container'>
       <h2>Documente</h2>
-      <form onSubmit={handleSubmit} className="form-container">
-        <div className="form-group">
+      <form onSubmit={handleSubmit} className='form-container'>
+        <div className='form-group'>
           <label>Title:</label>
           <input
-            type="text"
+            type='text'
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             required
-            style={{ width: "750px", marginBottom: "10px" }}
+            style={{ width: '750px', marginBottom: '10px' }}
           />
         </div>
-        <div className="form-group">
+        <div className='form-group'>
           <label>Description:</label>
           <textarea
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
-            style={{ width: "1000px", height: "100px", marginBottom: "10px" }}
+            style={{ width: '1000px', height: '100px', marginBottom: '10px' }}
           />
         </div>
-        <div className="form-group">
+        <div className='form-group'>
           <label>File:</label>
-          <input type="file" onChange={handleFileChange} required />
+          <input type='file' onChange={handleFileChange} required />
         </div>
-        <button type="submit" className="submit-button">
+        <button type='submit' className='submit-button'>
           Upload Document
         </button>
       </form>
 
-      <table className="styled-table">
+      <table className='styled-table'>
         <thead>
           <tr>
             <th>Title</th>
@@ -94,14 +95,14 @@ function Documente() {
               <td>
                 <button
                   onClick={() => handleDelete(doc.id)}
-                  style={{ marginRight: "10px" }}
+                  style={{ marginRight: '10px' }}
                 >
                   Delete
                 </button>
                 <a
                   href={`http://localhost:3000/rails/active_storage/blobs/${doc.file}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  target='_blank'
+                  rel='noopener noreferrer'
                 >
                   Preview
                 </a>
@@ -112,6 +113,6 @@ function Documente() {
       </table>
     </div>
   );
-}
+};
 
 export default Documente;
