@@ -10,7 +10,7 @@ import Inventar from './components/Inventar';
 import Tranzactii from './components/Tranzactii';
 import './App.css';
 
-function App() {
+const App = () => {
   return (
     <Router>
       <div className="container-fluid padding-top">
@@ -20,12 +20,15 @@ function App() {
           </div>
           <div className="col-md-6">
             <Routes>
-              <Route path="/" element={
-                <>
-                  <Summary />
-                  <BankBalances />
-                </>
-              } />
+              <Route
+                path="/"
+                element={
+                  <>
+                    <Summary />
+                    <BankBalances />
+                  </>
+                }
+              />
               <Route path="/angajati" element={<Angajati />} />
               <Route path="/documente" element={<Documente />} />
               <Route path="/inventar" element={<Inventar />} />
@@ -40,6 +43,6 @@ function App() {
       </div>
     </Router>
   );
-}
+};
 
 export default App;
