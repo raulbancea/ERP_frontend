@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 
-const Inventar = () => {
-  const [items, setItems] = useState([]);
+const Tranzactii = () => {
+  const [transactions, setTransactions] = useState([]);
   const [formData, setFormData] = useState({
-    name: '',
-    description: '',
+    product_name: '',
     quantity: 0,
+    date: '',
   });
 
   useEffect(() => {
-    fetch('/inventar')
+    fetch('http://localhost:3000/tranzactii')
       .then((response) => response.json())
-      .then((data) => setItems(data));
+      .then((data) => setTransactions(data));
   }, []);
 
   const handleChange = (e) => {
@@ -24,44 +24,39 @@ const Inventar = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch('http://localhost:3000/inventar', {
+    const transactionData = { transaction: formData };
+
+    fetch('http://localhost:3000/tranzactii', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(formData),
+      body: JSON.stringify(transactionData),
     })
       .then((response) => response.json())
-      .then((newItem) => {
-        setItems((prevItems) => [...prevItems, newItem]);
-        setFormData({ name: '', description: '', quantity: 0 });
+      .then((newTransaction) => {
+        setTransactions((prevTransactions) => [...prevTransactions, newTransaction]);
+        setFormData({ product_name: '', quantity: 0, date: '' });
       });
   };
 
   const handleDelete = (id) => {
-    fetch(`/inventar/${id}`, {
+    fetch(`/tranzactii/${id}`, {
       method: 'DELETE',
     }).then(() => {
-      setItems((prevItems) => prevItems.filter((item) => item.id !== id));
+      setTransactions((prevTransactions) => prevTransactions.filter((transaction) => transaction.id !== id));
     });
   };
 
   return (
     <div className='container'>
-      <h2>Inventar</h2>
+      <h2>Tranzactii</h2>
       <form onSubmit={handleSubmit} className='form-container'>
         <div className='form-group'>
           <input
-            name='name'
-            placeholder='Item Name'
-            value={formData.name}
-            onChange={handleChange}
-            required
-          />
-          <input
-            name='description'
-            placeholder='Description'
-            value={formData.description}
+            name='product_name'
+            placeholder='Product Name'
+            value={formData.product_name}
             onChange={handleChange}
             required
           />
@@ -72,29 +67,36 @@ const Inventar = () => {
             onChange={handleChange}
             required
           />
+          <input
+            name='date'
+            type='date'
+            value={formData.date}
+            onChange={handleChange}
+            required
+          />
         </div>
         <button type='submit' className='submit-button'>
-          Add Item
+          Add Transaction
         </button>
       </form>
 
       <table className='styled-table'>
         <thead>
           <tr>
-            <th>Name</th>
-            <th>Description</th>
+            <th>Product Name</th>
             <th>Quantity</th>
+            <th>Date</th>
             <th>Actions</th>
           </tr>
         </thead>
         <tbody>
-          {items.map((item) => (
-            <tr key={item.id}>
-              <td>{item.name}</td>
-              <td>{item.description}</td>
-              <td>{item.quantity}</td>
+          {transactions.map((transaction) => (
+            <tr key={transaction.id}>
+              <td>{transaction.product_name}</td>
+              <td>{transaction.quantity}</td>
+              <td>{transaction.date}</td>
               <td>
-                <button onClick={() => handleDelete(item.id)}>Delete</button>
+                <button onClick={() => handleDelete(transaction.id)}>Delete</button>
               </td>
             </tr>
           ))}
@@ -104,4 +106,4 @@ const Inventar = () => {
   );
 };
 
-export default Inventar;
+export default Tranzactii;
