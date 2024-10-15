@@ -1,17 +1,17 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from 'react';
 
-function Angajati() {
+const Angajati = () => {
   const [employees, setEmployees] = useState([]);
   const [formData, setFormData] = useState({
-    name: "",
-    position: "",
-    department: "",
+    name: '',
+    position: '',
+    department: '',
   });
 
   useEffect(() => {
-    fetch("/angajati")
+    fetch('/angajati')
       .then((response) => response.json())
-      .then((data) => setEmployees(data));
+      .then(setEmployees);
   }, []);
 
   const handleChange = (e) => {
@@ -23,61 +23,62 @@ function Angajati() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch("http://localhost:3000/angajati", {
-      method: "POST",
+
+    fetch('http://localhost:3000/angajati', {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(formData),
     })
       .then((response) => response.json())
       .then((newEmployee) => {
-        setEmployees([...employees, newEmployee]);
-        setFormData({ name: "", position: "", department: "" });
+        setEmployees((prevEmployees) => [...prevEmployees, newEmployee]);
+        setFormData({ name: '', position: '', department: '' });
       });
   };
 
   const handleDelete = (id) => {
     fetch(`/angajati/${id}`, {
-      method: "DELETE",
+      method: 'DELETE',
     }).then(() => {
-      setEmployees(employees.filter((employee) => employee.id !== id));
+      setEmployees((prevEmployees) => prevEmployees.filter((employee) => employee.id !== id));
     });
   };
 
   return (
-    <div className="container">
+    <div className='container'>
       <h2>Angajati</h2>
-      <form onSubmit={handleSubmit} className="form-container">
-        <div className="form-group">
+      <form onSubmit={handleSubmit} className='form-container'>
+        <div className='form-group'>
           <input
-            name="name"
-            placeholder="Employee Name"
+            name='name'
+            placeholder='Employee Name'
             value={formData.name}
             onChange={handleChange}
             required
           />
           <input
-            name="position"
-            placeholder="Position"
+            name='position'
+            placeholder='Position'
             value={formData.position}
             onChange={handleChange}
             required
           />
           <input
-            name="department"
-            placeholder="Department"
+            name='department'
+            placeholder='Department'
             value={formData.department}
             onChange={handleChange}
             required
           />
         </div>
-        <button type="submit" className="submit-button">
+        <button type='submit' className='submit-button'>
           Add Employee
         </button>
       </form>
 
-      <table className="styled-table">
+      <table className='styled-table'>
         <thead>
           <tr>
             <th>Name</th>
@@ -101,6 +102,6 @@ function Angajati() {
       </table>
     </div>
   );
-}
+};
 
 export default Angajati;
