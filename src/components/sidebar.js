@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 const Sidebar = () => {
   const navigate = useNavigate();
 
-  const handleUploadClick = () => {
+  const handleClick = () => {
     navigate('/documente');
   };
 
@@ -30,7 +30,7 @@ const Sidebar = () => {
           </li>
         </ul>
       </nav>
-      <button className="btn btn-primary w-100 mt-3" onClick={handleUploadClick}>
+      <button className="btn btn-primary w-100 mt-3" onClick={handleClick}>
         Incarca document
       </button>
     </div>
