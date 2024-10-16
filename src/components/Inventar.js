@@ -48,7 +48,7 @@ const Inventar = () => {
 
   return (
     <div className='container'>
-      <h2>Inventar</h2>
+      <h2>Inventory</h2>
       <form onSubmit={handleSubmit} className='form-container'>
         <div className='form-group'>
           <input

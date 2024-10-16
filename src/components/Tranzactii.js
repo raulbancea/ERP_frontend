@@ -6,6 +6,7 @@ const Tranzactii = () => {
     product_name: '',
     quantity: 0,
     date: '',
+    transaction_type: 'Intrare',
   });
 
   useEffect(() => {
@@ -36,7 +37,7 @@ const Tranzactii = () => {
       .then((response) => response.json())
       .then((newTransaction) => {
         setTransactions((prevTransactions) => [...prevTransactions, newTransaction]);
-        setFormData({ product_name: '', quantity: 0, date: '' });
+        setFormData({ product_name: '', quantity: 0, date: '', transaction_type: 'Intrare' });
       });
   };
 
@@ -50,7 +51,7 @@ const Tranzactii = () => {
 
   return (
     <div className='container'>
-      <h2>Tranzactii</h2>
+      <h2>Transactions</h2>
       <form onSubmit={handleSubmit} className='form-container'>
         <div className='form-group'>
           <input
@@ -74,6 +75,10 @@ const Tranzactii = () => {
             onChange={handleChange}
             required
           />
+          <select name="transaction_type" value={formData.transaction_type} onChange={handleChange} required>
+            <option value="Intrare">Intrare</option>
+            <option value="Iesire">Iesire</option>
+          </select>
         </div>
         <button type='submit' className='submit-button'>
           Add Transaction

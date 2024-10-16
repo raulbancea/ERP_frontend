@@ -12,16 +12,16 @@ const RecentOperations = () => {
   return (
     <div className="card mt-4">
       <div className="card-header">
-        <h5>Operatiuni Recente</h5>
+        <h5>Recent operations</h5>
       </div>
       <div className="card-body">
         <table className="table table-striped">
           <thead>
             <tr>
-              <th>Data</th>
-              <th>Firma</th>
-              <th>Suma</th>
-              <th>Tip Operatiune</th>
+              <th>Date</th>
+              <th>Name</th>
+              <th>Money</th>
+              <th>Operation</th>
             </tr>
           </thead>
           <tbody>

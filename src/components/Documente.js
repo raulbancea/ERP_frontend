@@ -47,7 +47,7 @@ const Documente = () => {
 
   return (
     <div className='container'>
-      <h2>Documente</h2>
+      <h2>Documents</h2>
       <form onSubmit={handleSubmit} className='form-container'>
         <div className='form-group'>
           <label>Title:</label>
