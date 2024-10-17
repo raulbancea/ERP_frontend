@@ -14,7 +14,7 @@ const BankBalances = () => {
         <tbody>
           <tr>
             <td><input type="text" className="form-control" placeholder="Bank name" /></td>
-            <td><input type="text" className="form-control" placeholder="amount" /></td>
+            <td><input type="text" className="form-control" placeholder="Amount" /></td>
           </tr>
         </tbody>
       </table>

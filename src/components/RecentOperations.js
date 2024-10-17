@@ -27,15 +27,15 @@ const RecentOperations = () => {
           <tbody>
             <tr>
               <td>01/09/2024</td>
-              <td>Firma 1</td>
+              <td>Business 1</td>
               <td>500 RON</td>
-              <td>Intrare</td>
+              <td>Inputs</td>
             </tr>
             <tr>
               <td>05/09/2024</td>
-              <td>Firma 2</td>
+              <td>Business 2</td>
               <td>700 RON</td>
-              <td>Iesire</td>
+              <td>Outputs</td>
             </tr>
           </tbody>
         </table>

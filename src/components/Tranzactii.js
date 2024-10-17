@@ -76,8 +76,8 @@ const Tranzactii = () => {
             required
           />
           <select name="transaction_type" value={formData.transaction_type} onChange={handleChange} required>
-            <option value="Intrare">Intrare</option>
-            <option value="Iesire">Iesire</option>
+            <option value="Intrare">Inputs</option>
+            <option value="Iesire">Outputs</option>
           </select>
         </div>
         <button type='submit' className='submit-button'>
