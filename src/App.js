@@ -29,10 +29,10 @@ const App = () => {
                   </>
                 }
               />
-              <Route path="/angajati" element={<Angajati />} />
-              <Route path="/documente" element={<Documente />} />
-              <Route path="/inventar" element={<Inventar />} />
-              <Route path="/tranzactii" element={<Tranzactii />} />
+              <Route path="/employees" element={<Angajati />} />
+              <Route path="/documents" element={<Documente />} />
+              <Route path="/inventory" element={<Inventar />} />
+              <Route path="/transactions" element={<Tranzactii />} />
               <Route path="*" element={<Navigate to="/" />} />
             </Routes>
           </div>

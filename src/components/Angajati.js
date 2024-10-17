@@ -48,7 +48,7 @@ const Angajati = () => {
 
   return (
     <div className='container'>
-      <h2>Angajati</h2>
+      <h2>Employees</h2>
       <form onSubmit={handleSubmit} className='form-container'>
         <div className='form-group'>
           <input
